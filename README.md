@@ -17,7 +17,7 @@ Large pull requests are intimidating. When reviewers see thousands of lines chan
 Instead of just showing line counts, show the breakdown:
 
 ```bash
-git diff --numstat | npx git-diff-chart pie --title "User Profile Redesign"
+git diff --numstat | npx git-diff-chart pie --title "User Profile Redesign" | xclip
 ```
 
 This might reveal that your "2,000 line" PR is actually:
@@ -91,7 +91,6 @@ Add the chart output to your PR description to give reviewers immediate context:
 ```markdown
 ## Changes Overview
 
-<!-- Generated with: npx git-diff-chart pie -->
 [Paste chart here]
 
 This PR adds user authentication. While the diff shows 800+ lines changed, 
@@ -135,7 +134,7 @@ npx git-diff-chart pie
 npm install -g git-diff-chart
 ```
 
-Requires Node.js 14+ and a git repository.
+Requires Node.js 18+ and a git repository.
 
 ## 🤝 Contributing
 

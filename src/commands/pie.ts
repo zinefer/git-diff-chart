@@ -1,4 +1,4 @@
-import { runGitDiff, parseGitDiffNumstat } from '../utils/helpers.js';
+import { runGitDiff, parseGitDiffNumstat, wrapInMarkdown } from '../utils/helpers.js';
 import { ChartOptions, generateMermaidPieChart } from '../utils/chart.js';
 
 export function pieCommand(options: ChartOptions) {
@@ -9,5 +9,5 @@ export function pieCommand(options: ChartOptions) {
     process.exit(1);
   }
   const chart = generateMermaidPieChart(entries, options);
-  console.log(chart);
+  console.log(wrapInMarkdown(chart));
 }
