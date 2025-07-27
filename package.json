@@ -1,0 +1,52 @@
+{
+  "name": "git-diff-chart",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Generate Mermaid charts from git diff data",
+  "main": "index.js",
+  "scripts": {
+    "cli": "bin/git-diff-chart.cjs",
+    "build": "tsc && chmod +x bin/git-diff-chart.cjs",
+    "dev": "tsx src/index.ts",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "test:e2e": "tests/run-e2e.sh"
+  },
+  "bin": {
+    "git-diff-chart": "./bin/git-diff-chart.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zinefer/git-diff-chart.git"
+  },
+  "keywords": [
+    "git",
+    "diff",
+    "mermaid",
+    "chart",
+    "cli",
+    "visualization",
+    "commander",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zinefer/git-diff-chart/issues"
+  },
+  "homepage": "https://github.com/zinefer/git-diff-chart#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@eslint/markdown": "^7.1.0",
+    "@types/node": "^24.1.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "jiti": "^2.5.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.38.0"
+  },
+  "dependencies": {
+    "commander": "^14.0.0"
+  }
+}
