@@ -1,8 +1,6 @@
 // CLI command for generating a bar chart from git diff data
 import { runGitDiff, parseGitDiffNumstat } from '../utils/helpers.js';
-import { generateMermaidBarChart } from '../utils/chart.js';
-import { ChartOptions } from '../types.js';
-
+import { generateMermaidBarChart, ChartOptions } from '../utils/chart.js';
 
 export function barCommand(options: ChartOptions) {
   const diffOutput = runGitDiff(options.baseBranch);

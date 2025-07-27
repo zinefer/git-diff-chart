@@ -1,14 +1,19 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
-import { GitDiffEntry } from "../types.js";
 
-export function runGitDiff(baseBranch: string): string {
+export interface GitDiffEntry {
+  additions: number;
+  deletions: number;
+  filename: string;
+}
+
+export function runGitDiff(baseBranch?: string): string {
   try {
     if (!process.stdin.isTTY) {
       // Read from STDIN if piped
       return fs.readFileSync(0, 'utf-8');
     } else {
-      const command = `git diff ${baseBranch} --numstat`;
+      const command = baseBranch ? `git diff ${baseBranch} --numstat` : 'git diff --numstat';
       return execSync(command, { encoding: 'utf-8' });
     }
   } catch (error) {

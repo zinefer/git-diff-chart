@@ -1,6 +1,5 @@
 import { runGitDiff, parseGitDiffNumstat } from '../utils/helpers.js';
-import { generateMermaidPieChart } from '../utils/chart.js';
-import { ChartOptions } from '../types.js';
+import { ChartOptions, generateMermaidPieChart } from '../utils/chart.js';
 
 export function pieCommand(options: ChartOptions) {
   const diffOutput = runGitDiff(options.baseBranch);

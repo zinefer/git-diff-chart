@@ -4,8 +4,7 @@ import { Command } from 'commander';
 
 import { barCommand } from './commands/bar.js';
 import { pieCommand } from './commands/pie.js';
-import { ChartOptions } from './types.js';
-
+import { ChartOptions } from './utils/chart.js';
 
 const program = new Command();
 
@@ -64,7 +63,6 @@ const chartCommands: ChartCommandConfig[] = [
     ],
     handler: barCommand,
     defaultOptions: {
-      chartType: 'bar',
       otherThreshold: 5,
       maxItems: 20
     }
@@ -77,9 +75,7 @@ const chartCommands: ChartCommandConfig[] = [
     ],
     handler: pieCommand,
     defaultOptions: {
-      chartType: 'pie',
       otherThreshold: 5,
-      maxItems: 20
     }
   }
 ];

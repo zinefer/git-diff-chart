@@ -1,15 +1,14 @@
-import { GitDiffEntry } from '../types.js';
-
 import { 
   applyIgnorePatterns, 
   filterEntries, 
   groupByPathLevel, 
   calculateMetric, 
   combineSmallSlices, 
-  createReadableLabel 
+  createReadableLabel, 
+  GitDiffEntry
 } from './helpers.js';
 
-interface ChartOptions {
+export interface ChartOptions {
   level: number;
   filter?: string;
   metric: 'total' | 'additions' | 'deletions';
@@ -17,6 +16,7 @@ interface ChartOptions {
   ignorePatterns?: string[];
   maxItems?: number;
   otherThreshold?: number;
+  baseBranch?: string;
 }
 
 interface ChartData {
@@ -61,14 +61,6 @@ function generateChartTitle(title: string | undefined, metric: string): string {
   return title || `Git Diff ${getMetricDisplayName(metric)}`;
 }
 
-// Helper to create short labels for bar charts
-function createShortLabel(label: string, maxLength: number = 8): string {
-  const pathParts = label.split('/');
-  const folderName = pathParts[pathParts.length - 1] || 
-                    pathParts[pathParts.length - 2] || 
-                    label;
-  return folderName.substring(0, maxLength);
-}
 
 export function generateMermaidBarChart(
   entries: GitDiffEntry[],
@@ -90,7 +82,7 @@ export function generateMermaidBarChart(
   const metricName = getMetricDisplayName(options.metric);
   const chartTitle = generateChartTitle(options.title, options.metric);
   
-  const labels = chartData.map(item => `"${createShortLabel(item.label)}"`);
+  const labels = chartData.map(item => `"${item.label}"`);
   const values = chartData.map(item => item.value);
   const maxValue = Math.max(...values);
   const yAxisMax = Math.ceil(maxValue * 1.1);
