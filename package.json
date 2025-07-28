@@ -1,7 +1,7 @@
 {
   "name": "git-diff-chart",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate Mermaid charts from git diff data",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,10 @@
   "bin": {
     "git-diff-chart": "./bin/git-diff-chart.cjs"
   },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zinefer/git-diff-chart.git"
